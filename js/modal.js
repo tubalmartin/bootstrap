@@ -18,7 +18,15 @@
  * ======================================================================== */
 
 
-+function ($) { 'use strict';
++function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define(['jquery'], factory);
+    } else {
+        // Browser globals:
+        factory(window.jQuery);
+    }
+}(function ($) { 'use strict';
 
   // MODAL CLASS DEFINITION
   // ======================
@@ -242,4 +250,4 @@
     .on('show.bs.modal',  '.modal', function () { $(document.body).addClass('modal-open') })
     .on('hidden.bs.modal', '.modal', function () { $(document.body).removeClass('modal-open') })
 
-}(jQuery);
+});

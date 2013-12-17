@@ -18,7 +18,15 @@
  * ======================================================================== */
 
 
-+function ($) { 'use strict';
++function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define(['jquery', './tooltip'], factory);
+    } else {
+        // Browser globals:
+        factory(window.jQuery);
+    }
+}(function ($) { 'use strict';
 
   // POPOVER PUBLIC CLASS DEFINITION
   // ===============================
@@ -114,4 +122,4 @@
     return this
   }
 
-}(jQuery);
+});

@@ -18,7 +18,15 @@
  * ======================================================================== */
 
 
-+function ($) { 'use strict';
++function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // Register as an anonymous AMD module:
+        define(['jquery'], factory);
+    } else {
+        // Browser globals:
+        factory(window.jQuery);
+    }
+}(function ($) { 'use strict';
 
   // DROPDOWN CLASS DEFINITION
   // =========================
@@ -151,4 +159,4 @@
     .on('click.bs.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.bs.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)
 
-}(jQuery);
+});
